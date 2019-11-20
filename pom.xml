@@ -1,19 +1,24 @@
-#Demoracle
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.1.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>cl.hiperactivo</groupId>
+    <artifactId>demoracle</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>demoracle</name>
+    <description>Demo project for Spring Boot</description>
 
-Este microservicio usa una conexión con una base de datos Oracle.
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
 
-## Dependencias
-
-Las dependencias usadas son:
-
-- Spring Boot Starter
-- Spring Boot Starter Data Rest
-- Spring Boot Starter Web
-- Spring Boot Starter Data JPA
-- Spring Boot DevTools
-
-```
-<dependencies>
+    <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -60,24 +65,13 @@ Las dependencias usadas son:
         </dependency>
     </dependencies>
 
-```
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
-## Configuración
-Se debe tener un archivo *.ora* o más conocido como **TNSNAMES**. Este archivo incluye la información de conexión al servidor de base de datos. Es como un string de conexión
-
-### application.properties
-```
-## use create when running the app for the first time
-## then change to "update" which just updates the schema when necessary
-## spring.jpa.hibernate.ddl-auto=create
-spring.jpa.database-platform=org.hibernate.dialect.Oracle10gDialect
-spring.datasource.url= jdbc:oracle:thin:@FAMIDESA?TNS_ADMIN=/Users/hb/Dropbox/Amisoft/Oracle/
-## spring.datasource.url= jdbc:oracle:thin:@FAMIDESA?TNS_ADMIN=$TNS_ADMIN
-spring.datasource.username=TRIFAM
-spring.datasource.password=utf0808
-spring.datasource.driver-class-name=oracle.jdbc.driver.OracleDriver
-## this shows the sql actions in the terminal logs
-spring.jpa.show-sql=true
-##optional, but just in case another application is listening on your default  port (8080)
-server.port = 8034
-```
+</project>
